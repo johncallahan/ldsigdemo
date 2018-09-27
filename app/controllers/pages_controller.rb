@@ -5,6 +5,6 @@ class PagesController < ApplicationController
     @signer.priv = Ed25519::SigningKey.new ["7f702a609f842057be24b5297e451662876f03b047d660362cd123f71d2a3b63"].pack('H*')
     @signed = @signer.sign @data, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
     @signed_hash = JSON.parse(@signed)
-    @signatureValue = @signed['signature']['signatureValue']
+    @signatureValue = @signed_hash['signature']['signatureValue']
   end
 end
