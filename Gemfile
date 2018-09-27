@@ -16,7 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-gem 'ruby-jsonld-signatures', '0.0.3', git: 'https://github.com/johncallahan/ruby-jsonld-signatures'
+gem 'ed25519'
+gem 'json-ld'
+gem 'ruby-jsonld-signatures', '0.0.7', git: 'https://github.com/johncallahan/ruby-jsonld-signatures'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
