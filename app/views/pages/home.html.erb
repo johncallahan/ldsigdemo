@@ -1,20 +1,20 @@
 <a href="https://github.com/johncallahan/ldsigdemo">
 <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub">
 </a>
-<% if !@data.blank? %>
-   <pre><%= JSON.pretty_generate(@data) %></pre>
-   <br/>
-   <pre>signatureValue = <%= @signatureValue %></pre>
+<% if !@data1.blank? && !@doc1.blank? %>
+   <pre><%= JSON.pretty_generate(@doc1) %></pre>
+   <h1>signed:</h1>
+   <pre><%= JSON.pretty_generate(@data1) %></pre>
 <% end %>
-<% if !@data2.blank? %>
+<% if !@data2.blank?  && !@doc2.blank? %>
    <hr/>
+   <pre><%= JSON.pretty_generate(@doc2) %></pre>
+   <h1>signed:</h1>
    <pre><%= JSON.pretty_generate(@data2) %></pre>
-   <br/>
-   <pre>signatureValue = <%= @signatureValue2 %></pre>
 <% end %>
-<% if !@data3.blank? %>
+<% if !@data3.blank? && !@doc3.blank? %>
    <hr/>
+   <pre><%= JSON.pretty_generate(@doc3) %></pre>
+   <h1>signed:</h1>
    <pre><%= JSON.pretty_generate(@data3) %></pre>
-   <br/>
-   <pre>signatureValue = <%= @signatureValue3 %></pre>
 <% end %>
