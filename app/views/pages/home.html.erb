@@ -1,3 +1,5 @@
 <% if !@data.blank? %>
    <pre><%= JSON.pretty_generate(@data) %></pre>
+   <br/>
+   <pre>signatureValue = <%= @signatureValue %></pre>
 <% end %>
