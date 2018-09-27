@@ -1,1 +1,3 @@
-Hello world
+<% if !@data.blank? %>
+   <pre><%= JSON.pretty_generate(@data) %></pre>
+<% end %>
