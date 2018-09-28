@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/johncallahan/ruby-jsonld-signatures
-  revision: d5630f3dba17bf04e3434be51e4dce09d901318f
+  revision: c005cd3b0e8934eb8e7287b0e82a426084cb6e9f
   specs:
-    ruby-jsonld-signatures (0.0.7)
+    ruby-jsonld-signatures (0.0.10)
       rdf (~> 3.0.4)
       rdf-normalize
       rdf-turtle
@@ -233,7 +233,7 @@ DEPENDENCIES
   pg
   puma (~> 3.11)
   rails (~> 5.2.1)
-  ruby-jsonld-signatures (= 0.0.7)!
+  ruby-jsonld-signatures (= 0.0.10)!
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

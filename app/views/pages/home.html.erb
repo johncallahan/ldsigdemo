@@ -4,17 +4,43 @@
 <% if !@data1.blank? && !@doc1.blank? %>
    <pre><%= JSON.pretty_generate(@doc1) %></pre>
    <h1>signed:</h1>
-   <pre><%= JSON.pretty_generate(@data1) %></pre>
+   <pre><%= JSON.pretty_generate(@sig1) %></pre>
+   <% if @valid1 %>
+     <h1>signature is valid</h1>
+   <% else %>
+     <h1>signature is invalid</h1>
+   <% end %>
 <% end %>
 <% if !@data2.blank?  && !@doc2.blank? %>
    <hr/>
    <pre><%= JSON.pretty_generate(@doc2) %></pre>
    <h1>signed:</h1>
-   <pre><%= JSON.pretty_generate(@data2) %></pre>
+   <pre><%= JSON.pretty_generate(@sig2) %></pre>
+   <% if @valid2 %>
+     <h1>signature is valid</h1>
+   <% else %>
+     <h1>signature is invalid</h1>
+   <% end %>
 <% end %>
 <% if !@data3.blank? && !@doc3.blank? %>
    <hr/>
    <pre><%= JSON.pretty_generate(@doc3) %></pre>
    <h1>signed:</h1>
-   <pre><%= JSON.pretty_generate(@data3) %></pre>
+   <pre><%= JSON.pretty_generate(@sig3) %></pre>
+   <% if @valid3 %>
+     <h1>signature is valid</h1>
+   <% else %>
+     <h1>signature is invalid</h1>
+   <% end %>
+<% end %>
+<% if !@data4.blank? && !@doc4.blank? %>
+   <hr/>
+   <pre><%= JSON.pretty_generate(@doc4) %></pre>
+   <h1>signed:</h1>
+   <pre><%= JSON.pretty_generate(@sig4) %></pre>
+   <% if @valid4 %>
+     <h1>signature is valid</h1>
+   <% else %>
+     <h1>signature is invalid</h1>
+   <% end %>
 <% end %>
