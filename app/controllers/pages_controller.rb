@@ -3,7 +3,7 @@ require 'json/ld/signature'
 
 class PagesController < ApplicationController
   def home
-    @data1 = JSON['{ "@context": [ "https://w3id.org/credentials/v1","https://w3id.org/security/v1"],  "type" : [ "Credential" ],  "claim" : {    "id" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk",    "publicKey" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1"  },  "issuer" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk",  "issued" : "2018-03-15T00:00:00Z"}']
+    @data1 = JSON['{ "@context": [ "https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1" ], "id": "https://example.com/credentials/1872", "type": ["VerifiableCredential", "AlumniCredential"], "issuanceDate": "2010-01-01T19:23:24Z", "credentialSubject": { "id": "did:example:ebfeb1f712ebc6f1c276e12ec21", "alumniOf": "Example University" }}']
     @doc1 = Marshal.load(Marshal.dump(@data1))
     @signer1 = JSON::LD::SIGNATURE::Ed25519Signer.new
     @signer1.priv = Ed25519::SigningKey.new ["7f702a609f842057be24b5297e451662876f03b047d660362cd123f71d2a3b63"].pack('H*')
@@ -15,7 +15,7 @@ class PagesController < ApplicationController
     @verifier1.pub = Ed25519::VerifyKey.new ["ff1a646cc8b69fcb522aa1ed162bc2816878252a634384ce46f7507bfc92f68f"].pack('H*')
     @valid1 = @verifier1.verify @signed1, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
 
-    @data2 = JSON['{ "@context": [ "https://w3id.org/credentials/v1","https://w3id.org/security/v1"],  "type" : [ "Credential" ],  "claim" : {    "id" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk",    "publicKey" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1"  },  "foo" : "bar", "issuer" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk",  "issued" : "2018-03-15T00:00:00Z"}']
+    @data2 = JSON['{ "@context": [ "https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1" ], "id": "https://example.com/credentials/1872", "type": ["VerifiableCredential", "AlumniCredential"], "issuanceDate": "2010-01-01T19:23:24Z", "foo" : "bar", "credentialSubject": { "id": "did:example:ebfeb1f712ebc6f1c276e12ec21", "alumniOf": "Example University" }}']
     @doc2 = Marshal.load(Marshal.dump(@data2))
     @signer2 = JSON::LD::SIGNATURE::Ed25519Signer.new
     @signer2.priv = Ed25519::SigningKey.new ["7f702a609f842057be24b5297e451662876f03b047d660362cd123f71d2a3b63"].pack('H*')
@@ -27,7 +27,7 @@ class PagesController < ApplicationController
     @verifier2.pub = Ed25519::VerifyKey.new ["ff1a646cc8b69fcb522aa1ed162bc2816878252a634384ce46f7507bfc92f68f"].pack('H*')
     @valid2 = @verifier2.verify @signed2, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
 
-    @data3 = JSON['{ "@context": [ "https://w3id.org/credentials/v1","https://w3id.org/security/v1"],  "type" : [ "Credential" ],  "claim" : {    "id" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk",    "publicKey" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1"  },  "nonce" : "somerandomvalue", "issuer" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk",  "issued" : "2018-03-15T00:00:00Z"}']
+    @data3 = JSON['{ "@context": [ "https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1" ], "id": "https://example.com/credentials/1872", "type": ["VerifiableCredential", "AlumniCredential"], "issuanceDate": "2010-01-01T19:23:24Z", "validUntil" : "2030-01-01T19:23:24Z", "credentialSubject": { "id": "did:example:ebfeb1f712ebc6f1c276e12ec21", "alumniOf": "Example University" }}']
     @doc3 = Marshal.load(Marshal.dump(@data3))
     @signer3 = JSON::LD::SIGNATURE::Ed25519Signer.new
     @signer3.priv = Ed25519::SigningKey.new ["7f702a609f842057be24b5297e451662876f03b047d660362cd123f71d2a3b63"].pack('H*')
@@ -39,7 +39,7 @@ class PagesController < ApplicationController
     @verifier3.pub = Ed25519::VerifyKey.new ["ff1a646cc8b69fcb522aa1ed162bc2816878252a634384ce46f7507bfc92f68f"].pack('H*')
     @valid3 = @verifier3.verify @signed3, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
 
-    @data4 = JSON['{ "@context": [ "https://w3id.org/credentials/v1","https://w3id.org/security/v1"],  "type" : [ "Credential" ],  "claim" : {    "id" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk",    "publicKey" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1"  },  "issuer" : "did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk",  "issued" : "2018-03-15T00:00:00Z"}']
+    @data4 = JSON['{ "@context": [ "https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1" ], "id": "https://example.com/credentials/1872", "type": ["VerifiableCredential", "AlumniCredential"], "issuanceDate": "2010-01-01T19:23:24Z", "credentialSubject": { "id": "did:example:ebfeb1f712ebc6f1c276e12ec21", "alumniOf": "Example University" }}']
     @doc4 = Marshal.load(Marshal.dump(@data4))
     @signer4 = JSON::LD::SIGNATURE::RsaSigner.new
     @signer4.priv = OpenSSL::PKey::RSA.new File.read 'data/priv_key.pem'

@@ -17,8 +17,9 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 
 gem 'ed25519'
-gem 'json-ld'
-gem 'ruby-jsonld-signatures', '0.0.10', git: 'https://github.com/johncallahan/ruby-jsonld-signatures'
+gem 'json-ld', '~> 3.1.4'
+#gem 'ruby-jsonld-signatures', '0.0.11', git: 'https://github.com/johncallahan/ruby-jsonld-signatures'
+gem 'ruby-jsonld-signatures', '0.0.11'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -63,4 +64,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
