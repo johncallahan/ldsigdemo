@@ -3,6 +3,8 @@
 </a>
 <% if !@data1.blank? && !@doc1.blank? %>
    <pre><%= JSON.pretty_generate(@doc1) %></pre>
+   <h1>normalized:</h1>
+   <pre><%= @normalized1 %></pre>
    <h1>signed:</h1>
    <pre><%= JSON.pretty_generate(@sig1) %></pre>
    <% if @valid1 %>
@@ -14,6 +16,8 @@
 <% if !@data2.blank?  && !@doc2.blank? %>
    <hr/>
    <pre><%= JSON.pretty_generate(@doc2) %></pre>
+   <h1>normalized:</h1>
+   <pre><%= @normalized2 %></pre>
    <h1>signed:</h1>
    <pre><%= JSON.pretty_generate(@sig2) %></pre>
    <% if @valid2 %>
@@ -25,6 +29,8 @@
 <% if !@data3.blank? && !@doc3.blank? %>
    <hr/>
    <pre><%= JSON.pretty_generate(@doc3) %></pre>
+   <h1>normalized:</h1>
+   <pre><%= @normalized3 %></pre>
    <h1>signed:</h1>
    <pre><%= JSON.pretty_generate(@sig3) %></pre>
    <% if @valid3 %>
@@ -36,6 +42,8 @@
 <% if !@data4.blank? && !@doc4.blank? %>
    <hr/>
    <pre><%= JSON.pretty_generate(@doc4) %></pre>
+   <h1>normalized:</h1>
+   <pre><%= @normalized4 %></pre>
    <h1>signed:</h1>
    <pre><%= JSON.pretty_generate(@sig4) %></pre>
    <% if @valid4 %>

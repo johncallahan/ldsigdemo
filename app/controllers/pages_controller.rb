@@ -3,10 +3,11 @@ require 'json/ld/signature'
 
 class PagesController < ApplicationController
   def home
-    @data1 = JSON['{ "@context": [ "https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1" ], "id": "https://example.com/credentials/1872", "type": ["VerifiableCredential", "AlumniCredential"], "issuanceDate": "2010-01-01T19:23:24Z", "credentialSubject": { "id": "did:example:ebfeb1f712ebc6f1c276e12ec21", "alumniOf": "Example University" }}']
+    @data1 = JSON['{"@context":["http://schema.org/","https://w3id.org/security/v2"],"name":"Manu Sporny","homepage":"https://manu.sporny.org/","image":"https://manu.sporny.org/images/manu.png"}']
     @doc1 = Marshal.load(Marshal.dump(@data1))
     @signer1 = JSON::LD::SIGNATURE::Ed25519Signer.new
     @signer1.priv = Ed25519::SigningKey.new ["7f702a609f842057be24b5297e451662876f03b047d660362cd123f71d2a3b63"].pack('H*')
+    @normalized1 = JSON::LD::SIGNATURE::generateNormalizedGraph @data1, {}
     @signed1 = @signer1.sign @data1, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
     @sig1 = Marshal.load(Marshal.dump(@data1))
     @signed1_hash = JSON.parse(@signed1)
@@ -15,10 +16,11 @@ class PagesController < ApplicationController
     @verifier1.pub = Ed25519::VerifyKey.new ["ff1a646cc8b69fcb522aa1ed162bc2816878252a634384ce46f7507bfc92f68f"].pack('H*')
     @valid1 = @verifier1.verify @signed1, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
 
-    @data2 = JSON['{ "@context": [ "https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1" ], "id": "https://example.com/credentials/1872", "type": ["VerifiableCredential", "AlumniCredential"], "issuanceDate": "2010-01-01T19:23:24Z", "foo" : "bar", "credentialSubject": { "id": "did:example:ebfeb1f712ebc6f1c276e12ec21", "alumniOf": "Example University" }}']
+    @data2 = JSON['{"@context":["http://schema.org/","https://w3id.org/security/v2"],"name":"Manu Sporny","foo":"bar","homepage":"https://manu.sporny.org/","image":"https://manu.sporny.org/images/manu.png"}']
     @doc2 = Marshal.load(Marshal.dump(@data2))
     @signer2 = JSON::LD::SIGNATURE::Ed25519Signer.new
     @signer2.priv = Ed25519::SigningKey.new ["7f702a609f842057be24b5297e451662876f03b047d660362cd123f71d2a3b63"].pack('H*')
+    @normalized2 = JSON::LD::SIGNATURE::generateNormalizedGraph @data2, {}
     @signed2 = @signer2.sign @data2, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
     @sig2 = Marshal.load(Marshal.dump(@data2))
     @signed2_hash = JSON.parse(@signed2)
@@ -27,10 +29,11 @@ class PagesController < ApplicationController
     @verifier2.pub = Ed25519::VerifyKey.new ["ff1a646cc8b69fcb522aa1ed162bc2816878252a634384ce46f7507bfc92f68f"].pack('H*')
     @valid2 = @verifier2.verify @signed2, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
 
-    @data3 = JSON['{ "@context": [ "https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1" ], "id": "https://example.com/credentials/1872", "type": ["VerifiableCredential", "AlumniCredential"], "issuanceDate": "2010-01-01T19:23:24Z", "validUntil" : "2030-01-01T19:23:24Z", "credentialSubject": { "id": "did:example:ebfeb1f712ebc6f1c276e12ec21", "alumniOf": "Example University" }}']
+    @data3 = JSON['{"@context":["http://schema.org/","https://w3id.org/security/v2"],"name":"Manu Sporny","homepage":"https://manu.sporny.org/","image":"https://manu.sporny.org/images/manu.png","nonce" : "0123456789"}']
     @doc3 = Marshal.load(Marshal.dump(@data3))
     @signer3 = JSON::LD::SIGNATURE::Ed25519Signer.new
     @signer3.priv = Ed25519::SigningKey.new ["7f702a609f842057be24b5297e451662876f03b047d660362cd123f71d2a3b63"].pack('H*')
+    @normalized3 = JSON::LD::SIGNATURE::generateNormalizedGraph @data3, {}
     @signed3 = @signer3.sign @data3, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
     @sig3 = Marshal.load(Marshal.dump(@data3))
     @signed3_hash = JSON.parse(@signed3)
@@ -39,10 +42,11 @@ class PagesController < ApplicationController
     @verifier3.pub = Ed25519::VerifyKey.new ["ff1a646cc8b69fcb522aa1ed162bc2816878252a634384ce46f7507bfc92f68f"].pack('H*')
     @valid3 = @verifier3.verify @signed3, { 'creator' => 'did:v1:test:nym:JApJf12r82Pe6PBJ3gJAAwo8F7uDnae6B4ab9EFQ7XXk#authn-key-1'}
 
-    @data4 = JSON['{ "@context": [ "https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1" ], "id": "https://example.com/credentials/1872", "type": ["VerifiableCredential", "AlumniCredential"], "issuanceDate": "2010-01-01T19:23:24Z", "credentialSubject": { "id": "did:example:ebfeb1f712ebc6f1c276e12ec21", "alumniOf": "Example University" }}']
+    @data4 = JSON['{"@context":["http://schema.org/","https://w3id.org/security/v2"],"name":"Manu Sporny","homepage":"https://manu.sporny.org/","image":"https://manu.sporny.org/images/manu.png"}']
     @doc4 = Marshal.load(Marshal.dump(@data4))
     @signer4 = JSON::LD::SIGNATURE::RsaSigner.new
     @signer4.priv = OpenSSL::PKey::RSA.new File.read 'data/priv_key.pem'
+    @normalized4 = JSON::LD::SIGNATURE::generateNormalizedGraph @data4, {}
     @signed4 = @signer4.sign @data4, { 'creator' => 'http://example.com/foo/key/1'}
     @sig4 = Marshal.load(Marshal.dump(@data4))
     @signed4_hash = JSON.parse(@signed4)
